@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calzón D'Or — Próximamente en PICAROWEB.">
+    <meta name="theme-color" content="#000000">
+    <title>Calzón D'Or — PICAROWEB</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+    <style>
+        .coming-soon-page {
+            min-height: calc(100vh - var(--nav-height, 52px));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coming-soon-page::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(191, 90, 242, 0.12) 0%, transparent 70%);
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .coming-soon-page::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 159, 10, 0.08) 0%, transparent 70%);
+            bottom: 10%;
+            right: 20%;
+            pointer-events: none;
+        }
+
+        .cs-icon {
+            font-size: 5rem;
+            margin-bottom: 24px;
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cs-title {
+            font-size: clamp(2.4rem, 6vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.05;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cs-title .accent-gold {
+            background: linear-gradient(135deg, #ffd740, #ff9f0a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cs-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            max-width: 480px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cs-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border-radius: 100px;
+            background: rgba(255, 159, 10, 0.1);
+            border: 1px solid rgba(255, 159, 10, 0.2);
+            font-size: 0.9rem;
+            color: #ff9f0a;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 1;
+            animation: pulse-badge 2s ease infinite;
+        }
+
+        .cs-badge .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ff9f0a;
+            animation: pulse-dot 2s ease infinite;
+        }
+
+        .cs-back {
+            margin-top: 48px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes pulse-badge {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 159, 10, 0.15);
+            }
+
+            50% {
+                box-shadow: 0 0 20px 4px rgba(255, 159, 10, 0.1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="coming-soon-page">
+            <div class="cs-icon">🩲</div>
+            <h1 class="cs-title">
+                <span class="accent-gold">Calzón D'Or</span>
+            </h1>
+            <p class="cs-subtitle">
+                Algo épico se está cocinando. Prepárate para una experiencia única que llegará muy pronto a PICAROWEB.
+            </p>
+            <div class="cs-badge">
+                <span class="dot"></span>
+                Próximamente
+            </div>
+            <div class="cs-back">
+                <a href="index.html" class="btn btn-outline">← Volver al Inicio</a>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p class="footer-text">© 2026 PICAROWEB. Hecho por los Pícaros.</p>
+        </footer>
+    </div>
+
+    <script src="js/nav.js"></script>
+    <script>injectNav('calzondor');</script>
+</body>
+
+</html>
