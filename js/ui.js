@@ -70,10 +70,9 @@ const UI = {
     },
 
     updateMenuStats() {
-        // Always show fresh defaults — save is cleared on every init
-        this.els.menuChips.textContent = '1,000';
-        this.els.menuMaxChips.textContent = '1,000';
-        this.els.menuGamesPlayed.textContent = '0';
+        if (this.els.menuChips) this.els.menuChips.textContent = '1,000';
+        if (this.els.menuMaxChips) this.els.menuMaxChips.textContent = '1,000';
+        if (this.els.menuGamesPlayed) this.els.menuGamesPlayed.textContent = '0';
     },
 
     // ---- Card Rendering ----
