@@ -2050,3 +2050,59 @@ body:root.light-mode .theme-switch .slider:before,
         transform: translateY(100%);
     }
 }
+/* --- Theme Poker (Green) --- */
+.container.theme-poker .title, 
+.container.theme-poker .highlight {
+    background: linear-gradient(45deg, #00ff66, #00aa33);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.container.theme-poker .title { filter: drop-shadow(0 0 15px rgba(0, 255, 102, 0.3)); }
+.container.theme-poker .glow-1, 
+.container.theme-poker .glow-2, 
+.container.theme-poker .glow-3 {
+    background: radial-gradient(circle at center, rgba(0, 255, 102, 0.3) 0%, transparent 70%);
+}
+.container.theme-poker .card-particles span { background: #00ff66; }
+.container.theme-poker .card::before {
+    background: radial-gradient(circle at center, rgba(0, 255, 102, 0.1) 0%, rgba(0, 170, 51, 0.05) 50%, transparent 100%);
+}
+
+/* --- Theme Calzon (Gold) --- */
+.container.theme-calzon .title, 
+.container.theme-calzon .highlight {
+    background: linear-gradient(45deg, #ffcc00, #ff6600);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.container.theme-calzon .title { filter: drop-shadow(0 0 15px rgba(255, 204, 0, 0.3)); }
+.container.theme-calzon .glow-1, 
+.container.theme-calzon .glow-2, 
+.container.theme-calzon .glow-3 {
+    background: radial-gradient(circle at center, rgba(255, 204, 0, 0.3) 0%, transparent 70%);
+}
+.container.theme-calzon .card-particles span { background: #ffcc00; }
+.container.theme-calzon .card::before {
+    background: radial-gradient(circle at center, rgba(255, 204, 0, 0.1) 0%, rgba(255, 102, 0, 0.05) 50%, transparent 100%);
+}
+
+/* --- Theme Soon (Blue) --- */
+.container.theme-soon .title, 
+.container.theme-soon .highlight {
+    background: linear-gradient(45deg, #0088ff, #0044ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.container.theme-soon .title { filter: drop-shadow(0 0 15px rgba(0, 136, 255, 0.3)); }
+.container.theme-soon .glow-1, 
+.container.theme-soon .glow-2, 
+.container.theme-soon .glow-3 {
+    background: radial-gradient(circle at center, rgba(0, 136, 255, 0.3) 0%, transparent 70%);
+}
+.container.theme-soon .card-particles span { background: #0088ff; }
+.container.theme-soon .card::before {
+    background: radial-gradient(circle at center, rgba(0, 136, 255, 0.1) 0%, rgba(0, 68, 255, 0.05) 50%, transparent 100%);
+}
