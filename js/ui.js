@@ -52,9 +52,7 @@ const UI = {
             resultHand: document.getElementById('result-hand'),
             resultAmount: document.getElementById('result-amount'),
             resultNextBtn: document.getElementById('result-next'),
-            resultLeaveBtn: document.getElementById('result-leave'),
-
-            dealerBadge: document.getElementById('dealer-badge')
+            resultLeaveBtn: document.getElementById('result-leave')
         };
     },
 
@@ -211,7 +209,9 @@ const UI = {
     // ---- Action Buttons ----
     showActions(availableActions, state, playerIndex) {
         this.els.actionButtons.classList.remove('hidden');
+        this.els.actionButtons.classList.add('action-grid');
         this.els.raiseControls.classList.add('hidden');
+        this.els.raiseControls.classList.remove('raise-panel');
 
         const callAmt = getCallAmount(state, playerIndex);
 
@@ -231,7 +231,9 @@ const UI = {
 
     hideActions() {
         this.els.actionButtons.classList.add('hidden');
+        this.els.actionButtons.classList.remove('action-grid');
         this.els.raiseControls.classList.add('hidden');
+        this.els.raiseControls.classList.remove('raise-panel');
     },
 
     showRaiseControls(state, playerIndex) {
@@ -240,6 +242,10 @@ const UI = {
         const maxR = getMaxRaise(state, playerIndex);
 
         this.els.raiseControls.classList.remove('hidden');
+        this.els.raiseControls.classList.add('raise-panel');
+        this.els.actionButtons.classList.add('hidden');
+        this.els.actionButtons.classList.remove('action-grid');
+
         this.els.raiseSlider.min = minR;
         this.els.raiseSlider.max = maxR;
         this.els.raiseSlider.value = minR;

@@ -126,7 +126,7 @@ const App = {
         // Animate dealing
         await this.sleep(this.dealAnimDelay);
         UI.renderPlayerHand(this.humanPlayer, true);
-        await this.sleep(600);
+        await this.sleep(300);
 
         this.isProcessing = false;
         this.processCurrentPlayer();
