@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calzón D'Or — El premio al mejor calzón. Próximamente en PICAROWEB.">
+    <meta name="theme-color" content="#000000">
+    <title>Calzón D'Or — PICAROWEB</title>
+    <link rel="stylesheet" href="css/global.css?v=2">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+    <style>
+        /* ---- Calzón D'Or — Balón de Oro inspired ---- */
+        .calzondor-page {
+            min-height: calc(100vh - var(--nav-height, 52px));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1005 40%, #0a0a0a 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated golden glow background */
+        .calzondor-page::before {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(219, 184, 92, 0.08) 0%, transparent 70%);
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            animation: goldPulse 4s ease-in-out infinite;
+        }
+
+        /* Hero Section */
+        .cd-hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 24px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cd-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border-radius: 100px;
+            background: rgba(219, 184, 92, 0.08);
+            border: 1px solid rgba(219, 184, 92, 0.2);
+            font-size: 0.78rem;
+            color: #dbb85c;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+
+        .cd-badge .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #dbb85c;
+            animation: pulse-dot 2s ease infinite;
+        }
+
+        /* Trophy */
+        .cd-trophy {
+            font-size: 7rem;
+            margin-bottom: 32px;
+            filter: drop-shadow(0 0 40px rgba(219, 184, 92, 0.3));
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        .cd-title {
+            font-size: clamp(2.8rem, 7vw, 5rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #dbb85c 0%, #f5e6a3 30%, #dbb85c 60%, #a67c30 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+        }
+
+        .cd-year {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            font-weight: 300;
+            color: rgba(219, 184, 92, 0.5);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .cd-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.5);
+            max-width: 520px;
+            line-height: 1.7;
+            margin-bottom: 48px;
+        }
+
+        /* Countdown / Coming Soon Badge */
+        .cd-coming {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            padding: 40px;
+            border-radius: 24px;
+            background: rgba(219, 184, 92, 0.03);
+            border: 1px solid rgba(219, 184, 92, 0.1);
+            backdrop-filter: blur(12px);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .cd-coming-title {
+            font-size: 0.85rem;
+            color: #dbb85c;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 600;
+        }
+
+        .cd-coming-text {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #f5f5f7;
+            letter-spacing: -1px;
+        }
+
+        .cd-coming-desc {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.4);
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* Divider Line */
+        .cd-divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #dbb85c, transparent);
+            margin: 60px 0 40px;
+        }
+
+        /* Categories Section */
+        .cd-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            max-width: 700px;
+            width: 100%;
+            padding: 0 24px 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cd-category {
+            padding: 24px 20px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(219, 184, 92, 0.08);
+            text-align: center;
+            transition: 0.3s ease;
+        }
+
+        .cd-category:hover {
+            border-color: rgba(219, 184, 92, 0.2);
+            background: rgba(219, 184, 92, 0.04);
+            transform: translateY(-2px);
+        }
+
+        .cd-cat-icon {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+
+        .cd-cat-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.5px;
+        }
+
+        .cd-cat-status {
+            font-size: 0.72rem;
+            color: rgba(219, 184, 92, 0.5);
+            margin-top: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Back Link */
+        .cd-back {
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cd-back .btn-outline {
+            border-color: rgba(219, 184, 92, 0.2);
+            color: rgba(219, 184, 92, 0.7);
+        }
+
+        .cd-back .btn-outline:hover {
+            border-color: rgba(219, 184, 92, 0.4);
+            color: #dbb85c;
+            background: rgba(219, 184, 92, 0.05);
+        }
+
+        /* Animations */
+        @keyframes goldPulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+
+        /* Footer override for this page */
+        .calzondor-page+.footer {
+            background: #0a0a0a;
+            border-top-color: rgba(219, 184, 92, 0.08);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cd-hero {
+                padding: 80px 20px 40px;
+            }
+
+            .cd-trophy {
+                font-size: 5rem;
+            }
+
+            .cd-coming {
+                padding: 28px 20px;
+            }
+
+            .cd-categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 374px) {
+            .cd-trophy {
+                font-size: 4rem;
+            }
+
+            .cd-categories {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="calzondor-page">
+
+            <!-- Hero -->
+            <div class="cd-hero">
+                <div class="cd-badge">
+                    <span class="dot"></span>
+                    Ceremonia Oficial
+                </div>
+
+                <div class="cd-trophy">🩲</div>
+
+                <h1 class="cd-title">Calzón D'Or</h1>
+                <p class="cd-year">· Edición 2026 ·</p>
+
+                <p class="cd-subtitle">
+                    El premio más prestigioso del mundo pícaro. Reconociendo la excelencia,
+                    el estilo y la grandeza de los verdaderos leyendas.
+                </p>
+
+                <div class="cd-coming">
+                    <div class="cd-coming-title">Estado</div>
+                    <div class="cd-coming-text">Próximamente</div>
+                    <p class="cd-coming-desc">
+                        La ceremonia de entrega se anunciará pronto.
+                        Mantente atento para conocer a los nominados.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="cd-divider"></div>
+
+            <!-- Categories -->
+            <div class="cd-categories">
+                <div class="cd-category">
+                    <div class="cd-cat-icon">🏆</div>
+                    <div class="cd-cat-name">Calzón D'Or</div>
+                    <div class="cd-cat-status">Por anunciar</div>
+                </div>
+                <div class="cd-category">
+                    <div class="cd-cat-icon">⭐</div>
+                    <div class="cd-cat-name">Mejor Jugador</div>
+                    <div class="cd-cat-status">Por anunciar</div>
+                </div>
+                <div class="cd-category">
+                    <div class="cd-cat-icon">🥇</div>
+                    <div class="cd-cat-name">Premio Revelación</div>
+                    <div class="cd-cat-status">Por anunciar</div>
+                </div>
+                <div class="cd-category">
+                    <div class="cd-cat-icon">👑</div>
+                    <div class="cd-cat-name">Leyenda Pícara</div>
+                    <div class="cd-cat-status">Por anunciar</div>
+                </div>
+            </div>
+
+            <!-- Back -->
+            <div class="cd-back">
+                <a href="index.html" class="btn btn-outline">← Volver al Inicio</a>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p class="footer-text">© 2026 PICAROWEB. Hecho por los Pícaros.</p>
+        </footer>
+    </div>
+
+    <script src="js/nav.js?v=2"></script>
+    <script>injectNav('calzondor');</script>
+</body>
+
+</html>
