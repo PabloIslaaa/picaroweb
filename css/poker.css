@@ -755,3 +755,93 @@
         border: 1px solid var(--border-dim);
     }
 }
+
+/* =========================================================
+   MOBILE RESPONSIVENESS (Small screens / Small height)
+========================================================= */
+@media (max-width: 480px), (max-height: 700px) {
+    .zone-top {
+        padding: 6px;
+        gap: 4px;
+        overflow-x: auto; /* allow horizontal scroll if too many bots */
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        scrollbar-width: none; /* firefox */
+    }
+    .zone-top::-webkit-scrollbar {
+        display: none; /* chrome/safari */
+    }
+    
+    .bot-seat {
+        min-width: 110px;
+        max-width: 130px;
+        padding: 4px;
+        flex: 0 0 auto;
+    }
+    
+    .bot-avatar {
+        font-size: 1.2rem;
+    }
+    
+    /* Center area scalable */
+    .zone-center {
+        padding: 4px;
+        gap: 10px;
+        min-height: 0;
+    }
+    
+    #pot-amount {
+        font-size: 1.6rem;
+    }
+    
+    .playing-card {
+        width: 42px;
+        height: 60px;
+    }
+    
+    .card-rank { font-size: 1rem; }
+    .card-suit { font-size: 1.2rem; }
+    
+    /* Bottom Zone adjustments */
+    .zone-bottom {
+        padding: 10px 8px 12px 8px;
+        gap: 10px;
+    }
+    
+    #player-chips {
+        font-size: 1rem;
+    }
+    
+    .player-hole-cards {
+        margin-top: -30px;
+        margin-bottom: 6px;
+    }
+    
+    .player-hole-cards .playing-card {
+        width: 52px;
+        height: 74px;
+    }
+    
+    .player-hole-cards .card-rank { font-size: 1.2rem; }
+    .player-hole-cards .card-suit { font-size: 1.4rem; }
+    
+    /* Buttons */
+    .action-btn {
+        padding: 12px 0;
+        font-size: 0.85rem;
+    }
+    
+    .raise-val {
+        font-size: 1.2rem;
+    }
+    
+    .btn-quick {
+        padding: 8px 0;
+        font-size: 0.75rem;
+    }
+    
+    .btn-raise-cancel, .btn-raise-confirm {
+        padding: 12px 0;
+        font-size: 0.9rem;
+    }
+}
