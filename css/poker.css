@@ -307,7 +307,7 @@
     /* reserve space */
 }
 
-.card {
+.playing-card {
     width: 54px;
     height: 78px;
     background: white;
@@ -417,7 +417,7 @@
     margin-bottom: 10px;
 }
 
-.player-hole-cards .card {
+.player-hole-cards .playing-card {
     width: 64px;
     height: 92px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);

@@ -78,7 +78,7 @@ const UI = {
     // ---- Card Rendering ----
     createCardElement(card, faceDown = false) {
         const el = document.createElement('div');
-        el.className = 'card';
+        el.className = 'playing-card';
         if (faceDown) {
             el.classList.add('card-back');
             el.innerHTML = `<div class="card-back-design">♠♥♦♣</div>`;
