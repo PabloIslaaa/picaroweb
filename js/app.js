@@ -10,6 +10,7 @@ const App = {
     isProcessing: false,
     turnTimerDuration: 30000, // 30 seconds
     dealAnimDelay: 400,
+    humanPlayerStartChips: 1000, // Track chips at start of hand
 
     // ---- Initialize ----
     init() {
@@ -116,6 +117,7 @@ const App = {
         UI.clearCommunityCards();
 
         startNewHand(this.state);
+        this.humanPlayerStartChips = this.humanPlayer.chips;
 
         // Render everything
         UI.renderBots(this.state);
@@ -290,7 +292,27 @@ const App = {
 
         await this.sleep(1000);
 
-        UI.showResult(this.state.winners, this.humanPlayer);
+        // Calculate amount lost if they didn't win
+        let lostAmount = 0;
+        if (!won) {
+            lostAmount = this.humanPlayerStartChips - this.humanPlayer.chips;
+        }
+
+        UI.showResult(this.state.winners, this.humanPlayer, lostAmount);
+        
+        // Handle Game Over Conditions
+        const allBotsDead = this.state.players.filter(p => !p.isHuman).every(p => p.chips <= 0);
+        if (this.humanPlayer.chips <= 0) {
+            UI.els.resultTitle.textContent = "HAS SIDO ELIMINADO";
+            UI.els.resultNextBtn.textContent = "Jugar de Nuevo";
+        } else if (allBotsDead) {
+            UI.els.resultTitle.textContent = "¡HAS GANADO LA MESA!";
+            UI.els.resultTitle.className = "result-title win";
+            UI.els.resultNextBtn.textContent = "Jugar de Nuevo";
+        } else {
+            UI.els.resultNextBtn.textContent = "Siguiente Mano";
+        }
+
         this.isProcessing = false;
     },
 

@@ -112,6 +112,205 @@
             margin-bottom: 48px;
         }
 
+        /* Hall of Fame Section */
+        .hof-header {
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 60px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .hof-header h2 {
+            font-size: 3rem;
+            font-weight: 300; /* Premium thin look */
+            color: #dbb85c;
+            letter-spacing: 12px; /* More spaced out */
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .cd-hof {
+            display: flex;
+            flex-direction: column;
+            gap: 100px; /* More spacing between legends */
+            max-width: 900px;
+            width: 100%;
+            padding: 0 24px 100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hof-row {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 40px;
+            position: relative;
+        }
+
+        .hof-image-wrapper {
+            width: 320px;
+            height: 320px;
+            flex-shrink: 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Ambient glow instead of a box */
+        .hof-image-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(219, 184, 92, 0.15) 0%, transparent 60%);
+            z-index: -1;
+            filter: blur(20px);
+        }
+
+        .hof-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
+            /* Remove old mix-blend-mode since we have PNGs now */
+        }
+
+        .hof-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .hof-name-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .hof-name {
+            font-size: 3.5rem;
+            font-weight: 300; /* Premium thin look */
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffffff 0%, #dbb85c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hof-rank {
+            font-size: 6rem;
+            font-weight: 300; /* Premium thin look */
+            font-style: normal;
+            line-height: 1.1; /* Prevent cut-off */
+            padding-right: 15px; /* Prevent italics or large letters from being cut by overflow */
+        }
+
+        .rank-gold {
+            background: linear-gradient(135deg, #dbb85c 0%, #f5e6a3 50%, #a67c30 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .rank-silver {
+            background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 50%, #808080 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hof-trophies {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hof-trophy {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            font-size: 3.5rem;
+            filter: drop-shadow(0 4px 12px rgba(219, 184, 92, 0.3));
+        }
+
+        .hof-year {
+            font-size: 1.2rem;
+            color: #dbb85c;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        /* --- Scroll Animations --- */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .animate-left {
+            transform: translateX(-60px);
+        }
+
+        .animate-right {
+            transform: translateX(60px);
+        }
+
+        .animate-scale {
+            transform: scale(0.8);
+        }
+
+        /* Add classes when in view */
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translate(0) scale(1);
+        }
+
+        /* Staggered transition delays using nth-child inside trophies */
+        .hof-trophies .hof-trophy:nth-child(1) { transition-delay: 0.1s; }
+        .hof-trophies .hof-trophy:nth-child(2) { transition-delay: 0.3s; }
+        .hof-trophies .hof-trophy:nth-child(3) { transition-delay: 0.5s; }
+
+        /* Back Link */
+        .cd-back {
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cd-back .btn-outline {
+            border-color: rgba(219, 184, 92, 0.2);
+            color: rgba(219, 184, 92, 0.7);
+        }
+
+        .cd-back .btn-outline:hover {
+            border-color: rgba(219, 184, 92, 0.4);
+            color: #dbb85c;
+            background: rgba(219, 184, 92, 0.05);
+        }
+
+        /* Animations */
+        @keyframes goldPulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+
         /* Countdown / Coming Soon Badge */
         .cd-coming {
             display: flex;
@@ -147,14 +346,6 @@
             color: rgba(255, 255, 255, 0.4);
             text-align: center;
             line-height: 1.6;
-        }
-
-        /* Divider Line */
-        .cd-divider {
-            width: 60px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #dbb85c, transparent);
-            margin: 60px 0 40px;
         }
 
         /* Categories Section */
@@ -204,37 +395,12 @@
             letter-spacing: 1px;
         }
 
-        /* Back Link */
-        .cd-back {
-            margin-bottom: 40px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cd-back .btn-outline {
-            border-color: rgba(219, 184, 92, 0.2);
-            color: rgba(219, 184, 92, 0.7);
-        }
-
-        .cd-back .btn-outline:hover {
-            border-color: rgba(219, 184, 92, 0.4);
-            color: #dbb85c;
-            background: rgba(219, 184, 92, 0.05);
-        }
-
-        /* Animations */
-        @keyframes goldPulse {
-
-            0%,
-            100% {
-                opacity: 0.5;
-                transform: translate(-50%, -50%) scale(1);
-            }
-
-            50% {
-                opacity: 0.8;
-                transform: translate(-50%, -50%) scale(1.1);
-            }
+        /* Divider Line */
+        .cd-divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #dbb85c, transparent);
+            margin: 60px 0 40px;
         }
 
         /* Footer override for this page */
@@ -260,6 +426,33 @@
             .cd-categories {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .hof-row {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 30px;
+            }
+
+            /* Show rank above the image on mobile */
+            .hof-rank {
+                margin-bottom: -10px;
+                padding-right: 0;
+            }
+
+            .hof-info {
+                align-items: center;
+                text-align: center;
+            }
+
+            .hof-trophies {
+                justify-content: center;
+            }
+
+            .hof-image-wrapper {
+                width: 240px;
+                height: 240px;
+            }
         }
 
         @media (max-width: 374px) {
@@ -267,8 +460,17 @@
                 font-size: 4rem;
             }
 
+            .hof-name {
+                font-size: 3rem;
+            }
+
             .cd-categories {
                 grid-template-columns: 1fr;
+            }
+
+            .hof-image-wrapper {
+                width: 200px;
+                height: 200px;
             }
         }
     </style>
@@ -292,14 +494,14 @@
 
                 <p class="cd-subtitle">
                     El premio más prestigioso del mundo pícaro. Reconociendo la excelencia,
-                    el estilo y la grandeza de los verdaderos leyendas.
+                    el estilo y la grandeza de las verdaderas leyendas.
                 </p>
 
-                <div class="cd-coming">
+                <div class="cd-coming animate-on-scroll animate-scale">
                     <div class="cd-coming-title">Estado</div>
                     <div class="cd-coming-text">Próximamente</div>
                     <p class="cd-coming-desc">
-                        La ceremonia de entrega se anunciará pronto.
+                        La ceremonia de entrega de 2026 se anunciará pronto.
                         Mantente atento para conocer a los nominados.
                     </p>
                 </div>
@@ -308,28 +510,52 @@
             <!-- Divider -->
             <div class="cd-divider"></div>
 
-            <!-- Categories -->
-            <div class="cd-categories">
-                <div class="cd-category">
-                    <div class="cd-cat-icon">🏆</div>
-                    <div class="cd-cat-name">Calzón D'Or</div>
-                    <div class="cd-cat-status">Por anunciar</div>
+            <div class="hof-header animate-on-scroll">
+                <h2>Hall Of Fame</h2>
+            </div>
+
+            <!-- Categories / Hall of Fame -->
+            <div class="cd-hof">
+                
+                <!-- Yasir -->
+                <div class="hof-row">
+                    <!-- Rank on the left -->
+                    <div class="hof-rank rank-gold animate-on-scroll animate-left">1º</div>
+                    
+                    <div class="hof-image-wrapper animate-on-scroll animate-scale">
+                        <img src="Yasir-Arabe.png" alt="Yasir Árabe" class="hof-img">
+                    </div>
+                    <div class="hof-info">
+                        <div class="hof-name animate-on-scroll animate-right">Yasir</div>
+                        <div class="hof-trophies">
+                            <div class="hof-trophy animate-on-scroll animate-scale" title="Ganador 2023">
+                                🏆 <span class="hof-year">2023</span>
+                            </div>
+                            <div class="hof-trophy animate-on-scroll animate-scale" title="Ganador 2024">
+                                🏆 <span class="hof-year">2024</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="cd-category">
-                    <div class="cd-cat-icon">⭐</div>
-                    <div class="cd-cat-name">Mejor Jugador</div>
-                    <div class="cd-cat-status">Por anunciar</div>
+
+                <!-- Sergi -->
+                <div class="hof-row">
+                    <!-- Rank on the left -->
+                    <div class="hof-rank rank-silver animate-on-scroll animate-left">2º</div>
+                    
+                    <div class="hof-image-wrapper animate-on-scroll animate-scale">
+                        <img src="Sergi-waluigi.png" alt="Sergi Waluigi" class="hof-img">
+                    </div>
+                    <div class="hof-info">
+                        <div class="hof-name animate-on-scroll animate-right">Sergi</div>
+                        <div class="hof-trophies">
+                            <div class="hof-trophy animate-on-scroll animate-scale" title="Ganador 2025">
+                                🏆 <span class="hof-year">2025</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="cd-category">
-                    <div class="cd-cat-icon">🥇</div>
-                    <div class="cd-cat-name">Premio Revelación</div>
-                    <div class="cd-cat-status">Por anunciar</div>
-                </div>
-                <div class="cd-category">
-                    <div class="cd-cat-icon">👑</div>
-                    <div class="cd-cat-name">Leyenda Pícara</div>
-                    <div class="cd-cat-status">Por anunciar</div>
-                </div>
+
             </div>
 
             <!-- Back -->
@@ -345,6 +571,28 @@
 
     <script src="js/nav.js?v=5"></script>
     <script>injectNav('calzondor');</script>
+    <script>
+        // Intersection Observer for Scroll Animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+            
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 
 </html>

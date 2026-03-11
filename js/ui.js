@@ -311,7 +311,7 @@ const UI = {
     },
 
     // ---- Result Overlay ----
-    showResult(winners, humanPlayer) {
+    showResult(winners, humanPlayer, lostAmount = 0) {
         this.els.resultOverlay.classList.remove('hidden');
         const won = winners.some(w => w.player.id === humanPlayer.id);
 
@@ -321,8 +321,14 @@ const UI = {
         if (winners.length > 0) {
             const w = winners[0];
             this.els.resultHand.textContent = w.hand ? w.hand.name : 'All folded';
-            this.els.resultAmount.textContent = `${won ? '+' : '-'}${formatChips(w.amount)}`;
-            this.els.resultAmount.className = `result-amount ${won ? 'win' : 'lose'}`;
+            
+            if (won) {
+                this.els.resultAmount.textContent = `+${formatChips(w.amount)}`;
+                this.els.resultAmount.className = 'result-amount win';
+            } else {
+                this.els.resultAmount.textContent = `-${formatChips(lostAmount)}`;
+                this.els.resultAmount.className = 'result-amount lose';
+            }
         }
     },
 

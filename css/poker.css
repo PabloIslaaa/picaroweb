@@ -383,6 +383,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 8px;
+    /* Put the chips on the right regardless of badges */
+    width: 100%;
 }
 
 .player-info-pill {
@@ -396,6 +398,7 @@
     font-weight: 700;
 }
 
+/* Push chips to the far right side of the top row */
 .chips-flex {
     display: flex;
     align-items: center;
@@ -403,6 +406,7 @@
     background: rgba(0, 0, 0, 0.4);
     padding: 4px 12px;
     border-radius: 12px;
+    margin-left: auto;
 }
 
 #player-chips {
